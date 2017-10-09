@@ -1,0 +1,4 @@
+pharmacie:
+    resource: '@PharmacieDevBundle/Controller/'
+    type: annotation
+    prefix: /pharmacie
