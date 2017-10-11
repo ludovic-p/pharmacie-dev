@@ -42,6 +42,69 @@ class OrderDetail
      */
     private $idOrderDetail;
 
+    /**
+     * @return int
+     */
+    public function getIdOrder()
+    {
+        return $this->idOrder;
+    }
+
+    /**
+     * @param int $idOrder
+     */
+    public function setIdOrder($idOrder)
+    {
+        $this->idOrder = $idOrder;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdProduct()
+    {
+        return $this->idProduct;
+    }
+
+    /**
+     * @param int $idProduct
+     */
+    public function setIdProduct($idProduct)
+    {
+        $this->idProduct = $idProduct;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * @param int $quantity
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdOrderDetail()
+    {
+        return $this->idOrderDetail;
+    }
+
+    /**
+     * @param int $idOrderDetail
+     */
+    public function setIdOrderDetail($idOrderDetail)
+    {
+        $this->idOrderDetail = $idOrderDetail;
+    }
+
 
 }
-

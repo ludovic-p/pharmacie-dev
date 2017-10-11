@@ -56,6 +56,101 @@ class Products
      */
     private $idProduct;
 
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUnitPrice()
+    {
+        return $this->unitPrice;
+    }
+
+    /**
+     * @param int $unitPrice
+     */
+    public function setUnitPrice($unitPrice)
+    {
+        $this->unitPrice = $unitPrice;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUnitStock()
+    {
+        return $this->unitStock;
+    }
+
+    /**
+     * @param int $unitStock
+     */
+    public function setUnitStock($unitStock)
+    {
+        $this->unitStock = $unitStock;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isParapharmacy()
+    {
+        return $this->isParapharmacy;
+    }
+
+    /**
+     * @param bool $isParapharmacy
+     */
+    public function setIsParapharmacy($isParapharmacy)
+    {
+        $this->isParapharmacy = $isParapharmacy;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdProduct()
+    {
+        return $this->idProduct;
+    }
+
+    /**
+     * @param int $idProduct
+     */
+    public function setIdProduct($idProduct)
+    {
+        $this->idProduct = $idProduct;
+    }
 
 }
 

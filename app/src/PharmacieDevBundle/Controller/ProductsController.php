@@ -22,12 +22,21 @@ class ProductsController extends Controller
     * @Rest\Get("/products")
     */
     public function getProductsAction(){
-        $test = ["message" => "test"];
-        $conn = $this->container->get('database_connection');
-        $sql = 'SELECT * FROM products;';
-        $rows = $conn->query($sql)->fetchAll();
-        $response = new JsonResponse();
+        $products = $this->get('doctrine.orm.entity_manager')
+                ->getRepository('PharmacieDevBundle:Products')
+                ->findAll();
+        $formatted = [];
+        foreach ($products as $product) {
+          $formatted[] = [
+             'id' => $product->getIdProduct(),
+             'name' => $product->getName(),
+             'description' => $product->getDescription(),
+             'unit_price' => $product->getUnitPrice(),
+             'unit_stock' => $product->getUnitStock(),
+             'isParapharmacy' => $product->isParapharmacy()
+          ];
+        }
 
-        return $response->setContent(json_encode($rows));
+        return new JsonResponse($formatted);
     }
 }
