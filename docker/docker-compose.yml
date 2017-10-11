@@ -41,7 +41,7 @@ services:
       container_name:
         service_pma
   app:
-      image: php:7.0-fpm
+      image: php:7.1-fpm
       volumes:
           - /home/docker/service/app:/var/www/html
       command: "true"

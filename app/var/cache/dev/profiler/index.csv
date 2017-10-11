@@ -1,7 +1,5 @@
-5f99bd,127.0.0.1,GET,http://localhost:8000/,1507574154,6bef98,200
-6bef98,127.0.0.1,GET,http://localhost:8000/,1507574154,,404
-65c6d9,127.0.0.1,GET,http://localhost:8000/pharmacie,1507574175,,301
-6c7fb3,127.0.0.1,GET,http://localhost:8000/pharmacie/,1507574176,,200
-34d160,127.0.0.1,GET,http://localhost:8000/pharmacie/,1507574219,,200
-a793ca,127.0.0.1,GET,http://localhost:8000/pharmacie/,1507574322,,200
-51f259,127.0.0.1,GET,http://localhost:8000/pharmacie/,1507574497,,200
+650b04,192.168.99.1,GET,http://symfony3.dev/app_dev.php/,1507681445,011faa,200
+011faa,192.168.99.1,GET,http://symfony3.dev/app_dev.php/,1507681446,,404
+52f9d5,192.168.99.1,GET,http://symfony3.dev/app_dev.php/pharmacie/,1507681452,b89371,200
+b89371,192.168.99.1,POST,http://symfony3.dev/app_dev.php/pharmacie/,1507681452,,405
+05e15e,192.168.99.1,GET,http://symfony3.dev/app_dev.php/pharmacie/,1507681459,,200

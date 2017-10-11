@@ -103,20 +103,34 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // pharmaciedev_default_gettest
-        if ('/pharmacie' === $trimmedPathinfo) {
-            if ('GET' !== $canonicalMethod) {
-                $allow[] = 'GET';
-                goto not_pharmaciedev_default_gettest;
-            }
+        elseif (0 === strpos($pathinfo, '/pharmacie')) {
+            // pharmaciedev_default_gettest
+            if ('/pharmacie' === $trimmedPathinfo) {
+                if ('GET' !== $canonicalMethod) {
+                    $allow[] = 'GET';
+                    goto not_pharmaciedev_default_gettest;
+                }
 
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'pharmaciedev_default_gettest');
-            }
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'pharmaciedev_default_gettest');
+                }
 
-            return array (  '_controller' => 'PharmacieDevBundle\\Controller\\DefaultController::getTestAction',  '_route' => 'pharmaciedev_default_gettest',);
+                return array (  '_controller' => 'PharmacieDevBundle\\Controller\\DefaultController::getTestAction',  '_route' => 'pharmaciedev_default_gettest',);
+            }
+            not_pharmaciedev_default_gettest:
+
+            // pharmaciedev_default_postlogin
+            if ('/pharmacie/login' === $pathinfo) {
+                if ('POST' !== $canonicalMethod) {
+                    $allow[] = 'POST';
+                    goto not_pharmaciedev_default_postlogin;
+                }
+
+                return array (  '_controller' => 'PharmacieDevBundle\\Controller\\DefaultController::postLoginAction',  '_route' => 'pharmaciedev_default_postlogin',);
+            }
+            not_pharmaciedev_default_postlogin:
+
         }
-        not_pharmaciedev_default_gettest:
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
