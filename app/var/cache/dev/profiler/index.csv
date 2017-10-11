@@ -1,8 +1,0 @@
-650b04,192.168.99.1,GET,http://symfony3.dev/app_dev.php/,1507681445,011faa,200
-011faa,192.168.99.1,GET,http://symfony3.dev/app_dev.php/,1507681446,,404
-52f9d5,192.168.99.1,GET,http://symfony3.dev/app_dev.php/pharmacie/,1507681452,b89371,200
-b89371,192.168.99.1,POST,http://symfony3.dev/app_dev.php/pharmacie/,1507681452,,405
-05e15e,192.168.99.1,GET,http://symfony3.dev/app_dev.php/pharmacie/,1507681459,,200
-a759e1,192.168.99.1,GET,http://symfony3.dev/app_dev.php/pharmacie/,1507713582,,200
-cb4dcd,192.168.99.1,GET,http://symfony3.dev/app_dev.php/phpmyadmin,1507713649,eebed7,200
-eebed7,192.168.99.1,GET,http://symfony3.dev/app_dev.php/phpmyadmin,1507713649,,404
