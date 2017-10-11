@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS `order_detail` (
   `id_order_detail` int(11) NOT NULL AUTO_INCREMENT,
   `id_order` int(11) NOT NULL,
   `id_product` int(11) NOT NULL,
+  `quantity` INT(5) NOT NULL,
   PRIMARY KEY (`id_order_detail`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
