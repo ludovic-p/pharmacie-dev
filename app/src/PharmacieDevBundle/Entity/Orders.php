@@ -29,7 +29,7 @@ class Orders
     /**
      * @var integer
      *
-     * @ORM\Column(name="discount", type="integer", nullable=false)
+     * @ORM\Column(name="discount", type="integer", nullable=true)
      */
     private $discount;
 

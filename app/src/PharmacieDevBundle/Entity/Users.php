@@ -57,14 +57,14 @@ class Users
     /**
      * @var integer
      *
-     * @ORM\Column(name="cp", type="integer", nullable=true)
+     * @ORM\Column(name="cp", type="integer", nullable=false)
      */
     private $cp;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="telephone", type="string", nullable=true)
+     * @ORM\Column(name="telephone", type="string", nullable=false)
      */
     private $telephone;
 
