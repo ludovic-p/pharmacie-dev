@@ -18,13 +18,9 @@ class UserController extends Controller
     * @Rest\Get("/users/{id}")
     */
     public function getUserAction($id){
-        $user = $this->getDoctrine()->getRepository('PharmacieDevBundle:Users')->find($id);
         $response = new JsonResponse();
+        $user = $this->getDoctrine()->getRepository('PharmacieDevBundle:Users')->find($id);
         if (empty($user)){
-            $response->setStatusCode(404);
-            return $response;
-        }
-        if (empty($result)){
             $response->setStatusCode(404);
             return $response;
         }
@@ -37,6 +33,7 @@ class UserController extends Controller
     * @Rest\Post("/users")
     */
     public function createUserAction(Request $request){
+        $response = new JsonResponse();
         $userPayload = json_decode($request->getContent());
         if(!empty($userPayload->email) && !empty($userPayload->password) &&
            !empty($userPayload->nom) && !empty($userPayload->prenom) &&
@@ -57,11 +54,9 @@ class UserController extends Controller
         $em->persist($data);
         $em->flush();
 
-        $response = new JsonResponse();
         $response->setStatusCode(201);
         return $response;
         } else {
-            $response = new JsonResponse();
             $response->setStatusCode(400);
             return $response;
         }
@@ -72,6 +67,7 @@ class UserController extends Controller
     * @Rest\Put("/users/{id}")
     */
     public function updateUserAction($id){
+        $response = new JsonResponse();
         $userPayload = json_decode($request->getContent());
 
         $data = new Users();
@@ -95,11 +91,9 @@ class UserController extends Controller
             $em->persist($data);
             $em->flush();
 
-            $response = new JsonResponse();
             $response->setStatusCode(201);
             return $response;
         } else {
-            $response = new JsonResponse();
             $response->setStatusCode(400);
             return $response;
         }
@@ -109,8 +103,8 @@ class UserController extends Controller
     * @Rest\Delete("/users/{id}")
     */
     public function deleteUserAction($id){
-        $data = new Users();
         $response = new JsonResponse();
+        $data = new Users();
         $user = $this->getDoctrine()->getRepository('PharmacieDevBundle:Users')->find($id);
         if (empty($user)){
             $response->setStatusCode(404);
@@ -128,8 +122,8 @@ class UserController extends Controller
      * @Rest\Post("/users/{id}/ordonnance")
      */
     public function addOrdonnanceAction($id, Request $request) {
-        $user = $this->getDoctrine()->getRepository('PharmacieDevBundle:Users')->find($id);
         $response = new JsonResponse();
+        $user = $this->getDoctrine()->getRepository('PharmacieDevBundle:Users')->find($id);
         if (empty($user)){
             $response->setStatusCode(404);
             return $response;
