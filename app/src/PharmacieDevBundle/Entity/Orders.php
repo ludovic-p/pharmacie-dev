@@ -7,15 +7,18 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Orders
  *
- * @ORM\Table(name="orders")
+ * @ORM\Table(name="orders", indexes={@ORM\Index(name="fk_id_user_764", columns={"id_user"})})
  * @ORM\Entity
  */
 class Orders
 {
     /**
-     * @var integer
+     * @var \PharmacieDevBundle\Entity\Users
      *
-     * @ORM\Column(name="id_user", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="PharmacieDevBundle\Entity\Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
+     * })
      */
     private $idUser;
 
