@@ -24,7 +24,7 @@ class UserController extends Controller
             $response->setStatusCode(404);
             return $response;
         }
-        $response->setContent($result->__toJson());
+        $response->setContent($user->__toJson());
         return $response;
     }
 
