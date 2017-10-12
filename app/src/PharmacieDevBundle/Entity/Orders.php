@@ -129,5 +129,17 @@ class Orders
         $this->idOrder = $idOrder;
     }
 
-}
+    /*
+     * Formatage des données en JSON
+     */
+    public function __toJson(){
+        $data = ["id_order" => $this->getIdOrder(),
+                 "id_user" => $this->getIdUser(),
+                 "status" => $this->getStatus(),
+                 "discount" => $this->getDiscount(),
+                 "order_date" => $this->getOrderDate()
+             ];
+        return json_encode($data);
+    }
 
+}

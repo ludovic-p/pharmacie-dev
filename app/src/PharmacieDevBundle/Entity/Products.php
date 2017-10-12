@@ -152,5 +152,18 @@ class Products
         $this->idProduct = $idProduct;
     }
 
-}
+    /*
+     * Formatage des données en JSON
+     */
+    public function __toJson(){
+        $data = ["id_product" => $this->getIdProduct(),
+                 "name" => $this->getName(),
+                 "description" => $this->getDescription(),
+                 "unit_stock" => $this->getUnitStock(),
+                 "unit_price" => $this->getUnitPrice(),
+                 "ordonnance" => $this->getOrdonnance()
+             ];
+        return json_encode($data);
+    }
 
+}

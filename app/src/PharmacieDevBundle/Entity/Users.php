@@ -106,7 +106,10 @@ class Users
         $this->idUser = $idUser;
     }
 
-    public function __toString() {
+    /*
+     * Formatage des données en JSON
+     */
+    public function __toJson() {
         $data = ["id" => $this->getIdUser(),
                  "email" => $this->getEmail(),
                  "nom" => '$this->getNom()',
@@ -114,7 +117,8 @@ class Users
                  "adresse" => '$this->getAdresse()',
                  "city" => '$this->getCity()',
                  "cp" => '$this->getCp()',
-                 "telephone" => '$this->getTelephone()'
+                 "telephone" => '$this->getTelephone()',
+                 "ordonnance" => '$this->getOrdonnance()'
              ];
         return json_encode($data);
     }

@@ -106,5 +106,15 @@ class OrderDetail
         $this->idOrderDetail = $idOrderDetail;
     }
 
-
+    /*
+     * Formatage des données en JSON
+     */
+    public function __toJson(){
+        $data = ["id_order_detail" => $this->getIdOrderDetail(),
+                 "id_order" => $this->getIdOrder(),
+                 "id_product" => $this->getIdProduct(),
+                 "quantity" => $this->getQuantity(),
+             ];
+        return json_encode($data);
+    }
 }

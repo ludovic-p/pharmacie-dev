@@ -20,7 +20,7 @@ class UserController extends Controller
     public function getUserAction($id){
         $result = $this->getDoctrine()->getRepository('PharmacieDevBundle:Users')->find($id);
         $response = new JsonResponse();
-        $response->setContent($result->__toString());
+        $response->setContent($result->__toJson());
         return $response;
     }
 
