@@ -105,6 +105,6 @@ class OrderDetail
     {
         $this->idOrderDetail = $idOrderDetail;
     }
-
-
+    
 }
+

@@ -27,6 +27,55 @@ class Users
     private $password;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=64, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=64, nullable=false)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=64, nullable=false)
+     */
+    private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=64, nullable=false)
+     */
+    private $city;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cp", type="integer", nullable=true)
+     */
+    private $cp;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="telephone", type="integer", nullable=true)
+     */
+    private $telephone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ordonnance", type="string", length=255, nullable=true)
+     */
+    private $ordonnance;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_creation", type="datetime", nullable=false)
@@ -75,6 +124,118 @@ class Users
     }
 
     /**
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param string $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * @param string $prenom
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * @param string $adresse
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCp()
+    {
+        return $this->cp;
+    }
+
+    /**
+     * @param int $cp
+     */
+    public function setCp($cp)
+    {
+        $this->cp = $cp;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * @param int $telephone
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrdonnance()
+    {
+        return $this->ordonnance;
+    }
+
+    /**
+     * @param string $ordonnance
+     */
+    public function setOrdonnance($ordonnance)
+    {
+        $this->ordonnance = $ordonnance;
+    }
+
+    /**
      * @return \DateTime
      */
     public function getDateCreation()
@@ -120,3 +281,4 @@ class Users
     }
 
 }
+
