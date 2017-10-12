@@ -20,6 +20,10 @@ class UserController extends Controller
     public function getUserAction($id){
         $result = $this->getDoctrine()->getRepository('PharmacieDevBundle:Users')->find($id);
         $response = new JsonResponse();
+        if (empty($result)){
+            $response->setStatusCode(404);
+            return $response;
+        }
         $response->setContent($result->__toJson());
         return $response;
     }
@@ -56,12 +60,31 @@ class UserController extends Controller
     */
     public function deleteUserAction($id){
         $data = new Users();
+        $response = new JsonResponse();
         $user = $this->getDoctrine()->getRepository('PharmacieDevBundle:Users')->find($id);
+        if (empty($user)){
+            $response->setStatusCode(404);
+            return $response;
+        }
         $manager = $this->getDoctrine()->getManager();
         $manager->remove($user);
         $manager->flush();
-        $response = new JsonResponse();
         $response->setContent(json_encode(["message" => "Utilisateur supprimé"]));
+        return $response;
+    }
+
+    /**
+     * Ajouter une ordonnance
+     * @Rest\Post("/users/{id}/ordonnance")
+     */
+    public function addOrdonnanceAction($id, Request $request) {
+        $user = $this->getDoctrine()->getRepository('PharmacieDevBundle:Users')->find($id);
+        $response = new JsonResponse();
+        if (empty($user)){
+            $response->setStatusCode(404);
+            return $response;
+        }
+        $response->setContent($user->__toJson());
         return $response;
     }
 }
