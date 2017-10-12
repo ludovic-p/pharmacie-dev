@@ -19,11 +19,11 @@ class UserController extends Controller
     */
     public function getUserAction($id){
         $user = $this->getDoctrine()->getRepository('PharmacieDevBundle:Users')->find($id);
+        $response = new JsonResponse();
         if (empty($user)){
             $response->setStatusCode(404);
             return $response;
         }
-        $response = new JsonResponse();
         if (empty($result)){
             $response->setStatusCode(404);
             return $response;
