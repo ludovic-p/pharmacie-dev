@@ -42,7 +42,7 @@ class ProductsController extends Controller
     }
 
     /**
-    * Créer un utilisateur
+    * Créer un produit
     * @Rest\Post("/products")
     */
     public function createProductAction(Request $request){
@@ -68,5 +68,24 @@ class ProductsController extends Controller
           $response->setStatusCode(400);
           return $response;
       }
+    }
+
+    /**
+    * Supprime un produit
+    * @Rest\Delete("/products/{id}")
+    */
+    public function deleteUserAction($id){
+        $response = new JsonResponse();
+        $data = new Products();
+        $product = $this->getDoctrine()->getRepository('PharmacieDevBundle:Products')->find($id);
+        if (empty($product)){
+            $response->setStatusCode(404);
+            return $response;
+        }
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($product);
+        $manager->flush();
+        $response->setContent(json_encode(["message" => "Produit supprimé"]));
+        return $response;
     }
 }
