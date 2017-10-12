@@ -7,23 +7,29 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * OrderDetail
  *
- * @ORM\Table(name="order_detail")
+ * @ORM\Table(name="order_detail", indexes={@ORM\Index(name="fk_id_order_353", columns={"id_order"}), @ORM\Index(name="fk_id_product_937", columns={"id_product"})})
  * @ORM\Entity
  */
 class OrderDetail
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_order", type="integer", nullable=false)
-     */
+    * @var \PharmacieDevBundle\Entity\Orders
+    *
+    * @ORM\ManyToOne(targetEntity="PharmacieDevBundle\Entity\Orders")
+    * @ORM\JoinColumns({
+    *   @ORM\JoinColumn(name="id_order", referencedColumnName="id_order")
+    * })
+    */
     private $idOrder;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_product", type="integer", nullable=false)
-     */
+      * @var \PharmacieDevBundle\Entity\Products
+      *
+      * @ORM\ManyToOne(targetEntity="PharmacieDevBundle\Entity\Products")
+      * @ORM\JoinColumns({
+      *   @ORM\JoinColumn(name="id_product", referencedColumnName="id_product")
+      * })
+      */
     private $idProduct;
 
     /**
@@ -118,4 +124,3 @@ class OrderDetail
         return json_encode($data);
     }
 }
-
