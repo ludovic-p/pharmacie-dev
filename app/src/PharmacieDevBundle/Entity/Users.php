@@ -106,5 +106,17 @@ class Users
         $this->idUser = $idUser;
     }
 
-}
+    public function __toString() {
+        $data = ["id" => $this->getIdUser(),
+                 "email" => $this->getEmail(),
+                 "nom" => '$this->getNom()',
+                 "prenom" => '$this->getPrenom()',
+                 "adresse" => '$this->getAdresse()',
+                 "city" => '$this->getCity()',
+                 "cp" => '$this->getCp()',
+                 "telephone" => '$this->getTelephone()'
+             ];
+        return json_encode($data);
+    }
 
+}
