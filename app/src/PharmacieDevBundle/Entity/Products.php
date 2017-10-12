@@ -43,9 +43,9 @@ class Products
     /**
      * @var boolean
      *
-     * @ORM\Column(name="is_parapharmacy", type="boolean", nullable=false)
+     * @ORM\Column(name="ordonnance", type="boolean", nullable=false)
      */
-    private $isParapharmacy;
+    private $ordonnance;
 
     /**
      * @var integer
@@ -123,17 +123,17 @@ class Products
     /**
      * @return bool
      */
-    public function isParapharmacy()
+    public function isOrdonnance()
     {
-        return $this->isParapharmacy;
+        return $this->ordonnance;
     }
 
     /**
-     * @param bool $isParapharmacy
+     * @param bool $ordonnance
      */
-    public function setIsParapharmacy($isParapharmacy)
+    public function setOrdonnance($ordonnance)
     {
-        $this->isParapharmacy = $isParapharmacy;
+        $this->ordonnance = $ordonnance;
     }
 
     /**
@@ -161,7 +161,7 @@ class Products
                  "description" => $this->getDescription(),
                  "unit_stock" => $this->getUnitStock(),
                  "unit_price" => $this->getUnitPrice(),
-                 "ordonnance" => $this->getOrdonnance()
+                 "ordonnance" => $this->isOrdonnance()
              ];
         return json_encode($data);
     }

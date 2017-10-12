@@ -118,3 +118,4 @@ class OrderDetail
         return json_encode($data);
     }
 }
+
