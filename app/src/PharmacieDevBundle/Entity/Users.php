@@ -271,8 +271,8 @@ class Users
      * Formatage des données en JSON
      */
     public function __toJson() {
-        $data = ["id" => $this->getIdUser(),
-                 "email" => $this->getEmail(),
+        $data = ["email" => $this->getEmail(),
+                 "password" => $this->getPassword(),
                  "nom" => $this->getNom(),
                  "prenom" => $this->getPrenom(),
                  "adresse" => $this->getAdresse(),

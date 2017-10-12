@@ -18,7 +18,11 @@ class UserController extends Controller
     * @Rest\Get("/users/{id}")
     */
     public function getUserAction($id){
-        $result = $this->getDoctrine()->getRepository('PharmacieDevBundle:Users')->find($id);
+        $user = $this->getDoctrine()->getRepository('PharmacieDevBundle:Users')->find($id);
+        if (empty($user)){
+            $response->setStatusCode(404);
+            return $response;
+        }
         $response = new JsonResponse();
         if (empty($result)){
             $response->setStatusCode(404);
@@ -34,17 +38,21 @@ class UserController extends Controller
     */
     public function createUserAction(Request $request){
         $userPayload = json_decode($request->getContent());
-
+        if(!empty($userPayload->email) && !empty($userPayload->password) &&
+           !empty($userPayload->nom) && !empty($userPayload->prenom) &&
+           !empty($userPayload->adresse) && !empty($userPayload->city) &&
+           !empty($userPayload->cp) && !empty($userPayload->telephone)
+        ) {
         $data = new Users();
         $data->setEmail($userPayload->email);
-        $data->setMdp($userPayload->mdp);
+        $data->setPassword($userPayload->password);
         $data->setNom($userPayload->nom);
         $data->setPrenom($userPayload->prenom);
         $data->setAdresse($userPayload->adresse);
         $data->setCity($userPayload->city);
         $data->setCp($userPayload->cp);
         $data->setTelephone($userPayload->telephone);
-
+        $data->setDateCreation(new \Datetime());
         $em = $this->getDoctrine()->getManager();
         $em->persist($data);
         $em->flush();
@@ -52,8 +60,50 @@ class UserController extends Controller
         $response = new JsonResponse();
         $response->setStatusCode(201);
         return $response;
+        } else {
+            $response = new JsonResponse();
+            $response->setStatusCode(400);
+            return $response;
+        }
     }
 
+    /**
+    * Créer un utilisateur
+    * @Rest\Put("/users/{id}")
+    */
+    public function updateUserAction($id){
+        $userPayload = json_decode($request->getContent());
+
+        $data = new Users();
+        if(!empty($userPayload->email) && !empty($userPayload->password) &&
+           !empty($userPayload->nom) && !empty($userPayload->prenom) &&
+           !empty($userPayload->adresse) && !empty($userPayload->city) &&
+           !empty($userPayload->cp) && !empty($userPayload->telephone) &&
+           !empty($userPayload->ordonnance)
+        ) {
+            $data->setEmail($userPayload->email);
+            $data->setPassword($userPayload->password);
+            $data->setNom($userPayload->nom);
+            $data->setPrenom($userPayload->prenom);
+            $data->setAdresse($userPayload->adresse);
+            $data->setCity($userPayload->city);
+            $data->setCp($userPayload->cp);
+            $data->setTelephone($userPayload->telephone);
+            $data->setOrdonnance($userPayload->ordonnance);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($data);
+            $em->flush();
+
+            $response = new JsonResponse();
+            $response->setStatusCode(201);
+            return $response;
+        } else {
+            $response = new JsonResponse();
+            $response->setStatusCode(400);
+            return $response;
+        }
+    }
     /**
     * Supprime un utilisateur
     * @Rest\Delete("/users/{id}")
