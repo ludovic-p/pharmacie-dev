@@ -77,6 +77,10 @@ class UserController extends Controller
            !empty($userPayload->ordonnance)
         ) {
             $data = $this->getDoctrine()->getRepository('PharmacieDevBundle:Users')->find($id);
+            if (!$data) {
+              $response->setStatusCode(404);
+              return $response;
+            }
             $data->setEmail($userPayload->email);
             $data->setPassword($userPayload->password);
             $data->setNom($userPayload->nom);
