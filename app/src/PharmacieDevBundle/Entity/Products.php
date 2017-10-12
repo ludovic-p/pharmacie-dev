@@ -29,7 +29,7 @@ class Products
     /**
      * @var integer
      *
-     * @ORM\Column(name="unit_price", type="integer", nullable=false)
+     * @ORM\Column(name="unit_price", type="float", nullable=false)
      */
     private $unitPrice;
 
