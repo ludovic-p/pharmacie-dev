@@ -159,6 +159,7 @@ class Products
         $data = ["id_product" => $this->getIdProduct(),
                  "name" => $this->getName(),
                  "description" => $this->getDescription(),
+                 "image" => $this->getImage(),
                  "unit_stock" => $this->getUnitStock(),
                  "unit_price" => $this->getUnitPrice(),
                  "ordonnance" => $this->isOrdonnance()
