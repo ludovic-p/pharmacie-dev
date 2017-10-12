@@ -70,13 +70,13 @@ class UserController extends Controller
         $response = new JsonResponse();
         $userPayload = json_decode($request->getContent());
 
-        $data = new Users();
         if(!empty($userPayload->email) && !empty($userPayload->password) &&
            !empty($userPayload->nom) && !empty($userPayload->prenom) &&
            !empty($userPayload->adresse) && !empty($userPayload->city) &&
            !empty($userPayload->cp) && !empty($userPayload->telephone) &&
            !empty($userPayload->ordonnance)
         ) {
+            $data = $this->getDoctrine()->getRepository('PharmacieDevBundle:Users')->find($id);
             $data->setEmail($userPayload->email);
             $data->setPassword($userPayload->password);
             $data->setNom($userPayload->nom);
