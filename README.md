@@ -11,6 +11,7 @@
     * mount -t vboxsf service /home/docker/service
   * Enregistrez et sortez pour redémarrer votre docker-machine (<code>docker-machine restart</code>). Celle-ci devrait avoir monté le volume service automatiquement.
   * Définissez dans le fichier *hosts* l'ip de votre docker machine (<code>docker-machine ls</code>) comme le DNS symfony3.dev
+  * Lancer la commande <code>docker-machine env NAME_MACHINE</code> puis executer la commande commençant par *@FOR*
   * Lancez la commande <code>docker-compose up -d</code> dans le dossier comprenant le *docker-compose.yml*
-  * Entrez dans le docker php <code>docker exec -it service_php bash</code>, et lancez composer (<code>composer install</code>)
+  * Entrez dans le docker php <code>docker exec -it service_php bash</code>, et lancez composer (<code>composer install</code>) puis aller dans le dossier *var* pour lancer la commande <code>chmod -R 777 cache logs && chown -R www-data:www-data cache logs</code>
   * Si tout est bien fait vous devirez voir la page de bienvenue de Symfony !
