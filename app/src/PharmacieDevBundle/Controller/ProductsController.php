@@ -50,7 +50,7 @@ class ProductsController extends Controller
         $productPayload = json_decode($request->getContent());
         if (!empty($productPayload->name) && !empty($productPayload->image)
         && !empty($productPayload->description) && !empty($productPayload->unit_price)
-        && !empty($productPayload->unit_stock) && !empty($productPayload->ordonnance)){
+        && !empty($productPayload->unit_stock)){
           $data = new Products();
           $data->setName($productPayload->name);
           $data->setImage($productPayload->image);
