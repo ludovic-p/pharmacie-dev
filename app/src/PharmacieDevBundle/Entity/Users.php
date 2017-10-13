@@ -272,7 +272,6 @@ class Users
      */
     public function __toJson() {
         $data = ["email" => $this->getEmail(),
-                 "password" => $this->getPassword(),
                  "nom" => $this->getNom(),
                  "prenom" => $this->getPrenom(),
                  "adresse" => $this->getAdresse(),

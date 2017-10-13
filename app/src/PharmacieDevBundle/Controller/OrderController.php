@@ -7,28 +7,26 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use PharmacieDevBundle\Entity\User;
+use PharmacieDevBundle\Entity\Orders;
+use PharmacieDevBundle\Entity\Users;
 
 
 class OrderController extends Controller
 {
-    public function indexAction()
-    {
-        return $this->render('PharmacieDevBundle:Default:index.html.twig');
-    }
 
     /**
     * Route Get de test
-    * @Rest\Get("orders/{id_product}")
+    * @Rest\Get("/orders/{id_user}")
     */
-    public function getTestAction($id_product){
+    public function getTestAction($id_user){
         $response = new JsonResponse();
-        $user = $this->getDoctrine()->getRepository('PharmacieDevBundle:Orders')->find($id_product);
-        if (empty($user)){
-            $response->setStatusCode(404);
+        $user = $this->getDoctrine()->getRepository('PharmacieDevBundle:Orders')->findOneBy(array("idUser" => $id_user));
+        if (!empty($user)){
+            var_dump($user->getUsers()->getIdUser()); die;
+            $response->setContent($orders->__toJson());
             return $response;
         }
-        $response->setContent($result->__toJson());
+        $response->setStatusCode(404);
         return $response;
     }
 

@@ -54,7 +54,8 @@ class UserController extends Controller
         $em->persist($data);
         $em->flush();
 
-        $response->setStatusCode(201);
+        $response->setStatusCode(200);
+        $response->setContent(json_encode(["id_user" => $data->getIdUser()]));
         return $response;
         } else {
             $response->setStatusCode(400);
