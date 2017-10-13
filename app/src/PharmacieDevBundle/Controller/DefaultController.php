@@ -28,16 +28,19 @@ class DefaultController extends Controller
     }
 
     /**
-    * Route Get de test
-    * @Rest\Post("/login")
-    */
-    public function postLoginAction(Request $request) {
-      $data = [
-        "message" => "",
-        "data" => ""
-      ];
-      $body = json_decode($request->getContent(), true);
-      $response = new JsonResponse();
-      return $response->setContent(json_encode($body));
+     * Login
+     * @Rest\Post("/login")
+     */
+    public function loginAction(Request $request) {
+        $userPayload = json_decode($request->getContent());
+        $response = new JsonResponse();
+        $user = $this->getDoctrine()->getRepository('PharmacieDevBundle:Users')->findBy(['email' => $userPayload->email, 'password' => md5($userPayload->password)]);
+        if (empty($user)){
+            $response->setStatusCode(404);
+            return $response;
+        }
+        $user = $user[0];
+        $response->setContent(json_encode(['id' => $user->getIdUser()]));
+        return $response;
     }
 }
